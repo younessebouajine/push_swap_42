@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yobouaji <yobouaji@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/26 17:05:59 by yobouaji          #+#    #+#             */
+/*   Updated: 2026/01/03 10:08:43 by yobouaji         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "push_swap.h"
 #include <limits.h>
 
@@ -51,7 +64,7 @@ int	has_duplicates(t_stack *stack)
 	return (0);
 }
 
-static long	ft_atol(const char *s)
+static long	ft_atoi(const char *s)
 {
 	long	value;
 	long	mark;
@@ -79,7 +92,7 @@ static int	process_number(char *str, t_stack **stack_a)
 
 	if (!is_valid_number(str))
 		return (0);
-	value = ft_atol(str);
+	value = ft_atoi(str);
 	if (value > INT_MAX || value < INT_MIN)
 		return (0);
 	new_node = create_node((int)value);
@@ -143,3 +156,6 @@ int	parse_args(int argc, char **argv, t_stack **stack_a)
 		return (0);
 	return (1);
 }
+
+
+// " -------999 "

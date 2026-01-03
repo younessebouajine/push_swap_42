@@ -14,7 +14,7 @@ SRCS = main.c \
     assign_indexes.c \
     chunk_sort.c
 
-OBJS = $(SRCS:. c=.o)
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
@@ -32,4 +32,5 @@ fclean: clean
 
 re: fclean all
 
-. PHONY: all clean fclean re
+.PHONY: all clean fclean re
+
