@@ -27,21 +27,24 @@ static int	ft_isdigit(char c)
 int	is_valid_number(char *str)
 {
 	int	i;
+	int	has_digit;
 
 	i = 0;
+	has_digit = 0;
 	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (! ft_isdigit(str[i]))
+	if (!str[i])
 		return (0);
 	while (str[i] != '\0')
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
+		has_digit = 1;
 		i++;
 	}
-	return (1);
+	return (has_digit);
 }
 
 int	has_duplicates(t_stack *stack)
@@ -49,6 +52,8 @@ int	has_duplicates(t_stack *stack)
 	t_stack	*current;
 	t_stack	*checker;
 
+	if (!stack)
+		return (0);
 	current = stack;
 	while (current != NULL)
 	{
@@ -64,25 +69,25 @@ int	has_duplicates(t_stack *stack)
 	return (0);
 }
 
-static long	ft_atoi(const char *s)
+static long	ft_atol(const char *s)
 {
-	long	value;
-	long	mark;
+    long	value;
+    int		sign;
 
-	value = 0;
-	mark = 1;
-	while (ft_isspace(*s))
-		s++;
-	if (*s == '-')
-		mark = -1;
-	if (*s == '-' || *s == '+')
-		s++;
-	while (ft_isdigit(*s))
-	{
-		value = value * 10 + (*s - '0');
-		s++;
-	}
-	return (value * mark);
+    value = 0;
+    sign = 1;
+    while (ft_isspace(*s))
+        s++;
+    if (*s == '-')
+        sign = -1;
+    if (*s == '-' || *s == '+')
+        s++;
+    while (ft_isdigit(*s))
+    {
+        value = value * 10 + (*s - '0');
+        s++;
+    }
+    return (value * sign);
 }
 
 static int	process_number(char *str, t_stack **stack_a)
@@ -92,7 +97,7 @@ static int	process_number(char *str, t_stack **stack_a)
 
 	if (!is_valid_number(str))
 		return (0);
-	value = ft_atoi(str);
+	value = ft_atol(str);
 	if (value > INT_MAX || value < INT_MIN)
 		return (0);
 	new_node = create_node((int)value);

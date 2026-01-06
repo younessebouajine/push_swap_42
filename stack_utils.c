@@ -15,15 +15,13 @@
 t_stack *create_node(int value)
 {
     t_stack *new_node;
-    
+
     new_node = malloc(sizeof(t_stack));
-    if (!new_node) 
+    if (!new_node)
         return (NULL);
-    
     new_node->value = value;
     new_node->index = -1;
     new_node->next = NULL;
-    
     return (new_node);
 }
 
@@ -31,19 +29,16 @@ void ft_add_end(t_stack **stack, t_stack *new_node)
 {
     t_stack *last;
 
-    if (! stack || !new_node)
+    if (!stack || !new_node)
         return;
-    
     if (*stack == NULL)
     {
         *stack = new_node;
         return;
     }
-    
     last = *stack;
     while (last->next != NULL)
         last = last->next;
-    
     last->next = new_node;
 }
 
@@ -86,4 +81,13 @@ int ft_is_sorted(t_stack *stack)
         stack = stack->next;
     }
     return (1);
+}
+
+t_stack *find_last_node(t_stack *stack)
+{
+    if (!stack)
+        return (NULL);
+    while (stack->next)
+        stack = stack->next;
+    return (stack);
 }

@@ -16,26 +16,24 @@
 
 int	find_min_position(t_stack *stack)
 {
-	int min;
-	int position;
-	int i;
-	
-	if (stack == NULL)
+	int		min;
+	int		position;
+	int		current_pos;
+
+	if (!stack)
 		return (0);
-	
 	min = stack->value;
 	position = 0;
-	i = 0;
-	
+	current_pos = 0;
 	while (stack != NULL)
 	{
 		if (stack->value < min)
 		{
 			min = stack->value;
-			position = i;
+			position = current_pos;
 		}
 		stack = stack->next;
-		i++;
+		current_pos++;
 	}
 	return (position);
 }
