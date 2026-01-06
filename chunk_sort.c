@@ -106,12 +106,10 @@ void	chunk_sort(t_stack **a, t_stack **b)
 	int	total_size;
 	int	chunk_size;
 	int	chunk_start;
-	int	num_chunks;
 
 	total_size = ft_stack_size(*a);
 	assign_indexes(*a);
 	chunk_size = calculate_chunk_size(total_size);
-	num_chunks = (total_size + chunk_size - 1) / chunk_size;
 
 	chunk_start = 0;
 	while (chunk_start < total_size && ft_stack_size(*a) > 3)
