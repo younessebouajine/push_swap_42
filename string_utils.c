@@ -39,7 +39,7 @@ static int	count_words(char const *s, char c)
 	in_word = 0;
 	while (*s)
 	{
-		if (*s != c && ! in_word)
+		if (*s != c && !in_word)
 		{
 			in_word = 1;
 			count++;
