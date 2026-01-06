@@ -71,23 +71,23 @@ int	has_duplicates(t_stack *stack)
 
 static long	ft_atol(const char *s)
 {
-    long	value;
-    int		sign;
+	long	value;
+	int		sign;
 
-    value = 0;
-    sign = 1;
-    while (ft_isspace(*s))
-        s++;
-    if (*s == '-')
-        sign = -1;
-    if (*s == '-' || *s == '+')
-        s++;
-    while (ft_isdigit(*s))
-    {
-        value = value * 10 + (*s - '0');
-        s++;
-    }
-    return (value * sign);
+	value = 0;
+	sign = 1;
+	while (ft_isspace(*s))
+		s++;
+	if (*s == '-')
+		sign = -1;
+	if (*s == '-' || *s == '+')
+		s++;
+	while (ft_isdigit(*s))
+	{
+		value = value * 10 + (*s - '0');
+		s++;
+	}
+	return (value * sign);
 }
 
 static int	process_number(char *str, t_stack **stack_a)
