@@ -27,24 +27,21 @@ static int	ft_isdigit(char c)
 int	is_valid_number(char *str)
 {
 	int	i;
-	int	has_digit;
 
 	i = 0;
-	has_digit = 0;
 	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (!str[i])
+	if (!ft_isdigit(str[i]))
 		return (0);
 	while (str[i] != '\0')
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
-		has_digit = 1;
 		i++;
 	}
-	return (has_digit);
+	return (1);
 }
 
 int	has_duplicates(t_stack *stack)
