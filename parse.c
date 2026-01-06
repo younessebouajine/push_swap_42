@@ -33,7 +33,7 @@ int	is_valid_number(char *str)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (! ft_isdigit(str[i]))
+	if (!ft_isdigit(str[i]))
 		return (0);
 	while (str[i] != '\0')
 	{
@@ -49,6 +49,8 @@ int	has_duplicates(t_stack *stack)
 	t_stack	*current;
 	t_stack	*checker;
 
+	if (!stack)
+		return (0);
 	current = stack;
 	while (current != NULL)
 	{
@@ -64,17 +66,17 @@ int	has_duplicates(t_stack *stack)
 	return (0);
 }
 
-static long	ft_atoi(const char *s)
+static long	ft_atol(const char *s)
 {
 	long	value;
-	long	mark;
+	int		sign;
 
 	value = 0;
-	mark = 1;
+	sign = 1;
 	while (ft_isspace(*s))
 		s++;
 	if (*s == '-')
-		mark = -1;
+		sign = -1;
 	if (*s == '-' || *s == '+')
 		s++;
 	while (ft_isdigit(*s))
@@ -82,7 +84,7 @@ static long	ft_atoi(const char *s)
 		value = value * 10 + (*s - '0');
 		s++;
 	}
-	return (value * mark);
+	return (value * sign);
 }
 
 static int	process_number(char *str, t_stack **stack_a)
@@ -92,7 +94,7 @@ static int	process_number(char *str, t_stack **stack_a)
 
 	if (!is_valid_number(str))
 		return (0);
-	value = ft_atoi(str);
+	value = ft_atol(str);
 	if (value > INT_MAX || value < INT_MIN)
 		return (0);
 	new_node = create_node((int)value);

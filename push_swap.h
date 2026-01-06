@@ -31,6 +31,7 @@ void    ft_add_end(t_stack **stack, t_stack *new_node);
 void    ft_deallocate(t_stack **stack);
 int     ft_stack_size(t_stack *stack);
 int     ft_is_sorted(t_stack *stack);
+t_stack *find_last_node(t_stack *stack);
 
 // Operations
 void    sa(t_stack **a);
